@@ -22,13 +22,17 @@ echo "repo2docker command: $cmd"
 eval $cmd
 
 echo "About to check docker path"
-which docker
+docker --version
 echo "Finished checking docker path"
 
 
 # CURR_CONDA_VER=`/srv/conda/bin/conda --version | cut -d " " -f 2`
 # CURR_R2D_VER=`/srv/conda/envs/notebook/bin/pip list | grep jupyter-repo2docker`
 
+CURR_CONDA_VER="UNKNOWN"
+CURR_R2D_VER="UNKNOWN"
+CURR_DOCKER_VER=`docker --version`
+
 # Emit output variables
-# echo "::set-output name=CURR_CONDA_VER::${CURR_CONDA_VER}"
-# echo "::set-output name=CURR_R2D_VER::${CURR_R2D_VER}"
+echo "::set-output name=CURR_CONDA_VER::${CURR_CONDA_VER}"
+echo "::set-output name=CURR_R2D_VER::${CURR_R2D_VER}"
