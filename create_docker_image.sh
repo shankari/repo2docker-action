@@ -12,7 +12,7 @@ function check_env() {
 }
 
 # Run repo2docker
-cmd="jupyter-repo2docker --no-run --user-id 1234 --user-name ${NB_USER} --image-name ${SHA_NAME} --ref $GITHUB_SHA ${PWD}"
+cmd="jupyter-repo2docker --no-run --user-id 1234 --ref $GITHUB_SHA ${PWD}"
 echo "repo2docker command: $cmd"
 eval $cmd
 
