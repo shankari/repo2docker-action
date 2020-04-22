@@ -1,23 +1,14 @@
 name: 'repo2docker Action'
 description: 'Creates a docker image of your repository to view the collection of notebooks'
 inputs:
-  DOCKER_USERNAME:
-    description: Docker registry username
-    require: true
-  DOCKER_PASSWORD:
-    description: Docker registry password
-    required: true
-  IMAGE_NAME:
-    description: name of the image.  Example - myContainer
-    require: true
   NOTEBOOK_USER:
     description: username of the primary user in the image
     require: false
 outputs:
-  IMAGE_SHA_NAME:
-    description: The name of the docker image, which is tagged with the SHA.
-  IMAGE_URI:
-    description: The URI on DockerHub that corresponds to the image.
+  CURR_CONDA_VER:
+    description: The conda version used to build
+  CURR_R2D_VER:
+    description: The repo2docker version used to build
 runs:
   using: 'docker'
   image: 'Dockerfile'

@@ -11,27 +11,14 @@ function check_env() {
     fi
 }
 
-check_env "INPUT_DOCKER_USERNAME"
-check_env "INPUT_DOCKER_PASSWORD"
-check_env "INPUT_IMAGE_NAME"
-
-# Pick username
-NB_USER=${NOTEBOOK_USER:-"$GITHUB_ACTOR"}
-
-# Login to Docker registry
-echo ${INPUT_DOCKER_PASSWORD} | docker login -u ${INPUT_DOCKER_USERNAME} --password-stdin
-
-# Set Local Variables
-shortSHA=$(echo "${GITHUB_SHA}" | cut -c1-12)
-SHA_NAME="${INPUT_IMAGE_NAME}:${shortSHA}"
-
 # Run repo2docker
 cmd="jupyter-repo2docker --no-run --user-id 1234 --user-name ${NB_USER} --image-name ${SHA_NAME} --ref $GITHUB_SHA ${PWD}"
 echo "repo2docker command: $cmd"
 eval $cmd
-echo "docker push ${SHA_NAME}"
-docker push ${SHA_NAME}
+
+CURR_CONDA_VER=`conda --version | cut -d " " -f 2`
+CURR_R2D_VER=`pip list | grep jupyter-repo2docker`
 
 # Emit output variables
-echo "::set-output name=IMAGE_SHA_NAME::${SHA_NAME}"
-echo "::set-output name=IMAGE_URI::https://hub.docker.com/r/${INPUT_IMAGE_NAME}"
+echo "::set-output name=CURR_CONDA_VER::${CURR_CONDA_VER}"
+echo "::set-output name=CURR_R2D_VER::${CURR_R2D_VER}"
