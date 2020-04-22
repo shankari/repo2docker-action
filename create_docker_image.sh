@@ -13,8 +13,8 @@ function check_env() {
 
 # Pick username
 NB_USER=${NOTEBOOK_USER:-"$GITHUB_ACTOR"}
-IMG_NAME=${IMAGE_NAME:-"EMISSIONEVAL"}
-echo "Using user $NB_USER to create IMG_NAME $IMG_NAME"
+IMG_NAME=${IMAGE_NAME:-"mobilitynet"}
+echo "Using user $NB_USER to create image name $IMG_NAME"
 
 # Run repo2docker
 cmd="jupyter-repo2docker --no-run --user-id 1234 --user-name ${NB_USER} --image-name ${IMG_NAME} --ref $GITHUB_SHA ${PWD}"
