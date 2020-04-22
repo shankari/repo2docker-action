@@ -25,8 +25,8 @@ echo "About to check docker path"
 docker --version
 echo "Finished checking docker path"
 
-
-# CURR_CONDA_VER=`/srv/conda/bin/conda --version | cut -d " " -f 2`
+echo 'About to run docker run $IMG_NAME:latest /srv/conda/bin/conda --version | cut -d " " -f 2'
+CURR_CONDA_VER=`docker run $IMG_NAME:latest /srv/conda/bin/conda --version | cut -d " " -f 2`
 # CURR_R2D_VER=`/srv/conda/envs/notebook/bin/pip list | grep jupyter-repo2docker`
 
 CURR_CONDA_VER="UNKNOWN"
