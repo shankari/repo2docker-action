@@ -41,7 +41,7 @@ echo "About to run docker run ${SHA_NAME} /srv/conda/bin/conda --version"
 docker run $SHA_NAME /srv/conda/bin/conda --version | cut -d " " -f 2
 echo "About to run it again to capture the output"
 CURR_CONDA_VER=`docker run $SHA_NAME /srv/conda/bin/conda --version | cut -d " " -f 2`
-echo "Finished running docker run`
+echo "Finished running docker run"
 
 echo "About to run pip on the local container"
 pip3 list | grep jupyter-repo2docker
