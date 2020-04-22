@@ -10,12 +10,6 @@ inputs:
 outputs:
   IMAGE_SHA_NAME:
     description: The name of the docker image, which is tagged with the SHA.
-  CURR_DOCKER_VER:
-    description: The docker version used to build
-  CURR_CONDA_VER:
-    description: The conda version used to build
-  CURR_R2D_VER:
-    description: The repo2docker version used to build
 runs:
   using: 'docker'
   image: 'Dockerfile'
