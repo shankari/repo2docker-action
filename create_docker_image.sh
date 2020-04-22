@@ -19,8 +19,8 @@ cmd="jupyter-repo2docker --no-run --user-id 1234 --user-name ${NB_USER} --ref $G
 echo "repo2docker command: $cmd"
 eval $cmd
 
-CURR_CONDA_VER=`conda --version | cut -d " " -f 2`
-CURR_R2D_VER=`pip list | grep jupyter-repo2docker`
+CURR_CONDA_VER=`/srv/conda/bin/conda --version | cut -d " " -f 2`
+CURR_R2D_VER=`/srv/conda/envs/notebook/bin/pip list | grep jupyter-repo2docker`
 
 # Emit output variables
 echo "::set-output name=CURR_CONDA_VER::${CURR_CONDA_VER}"
