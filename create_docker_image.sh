@@ -37,7 +37,7 @@ echo "Checking docker images"
 
 echo "About to run docker run ${SHA_NAME} /srv/conda/bin/conda --version"
 docker run $SHA_NAME /srv/conda/bin/conda --version | cut -d " " -f 2
-docker run $SHA_NAME /srv/conda/envs/notebook/bin/pip list | grep jupyter-repo2docker
+docker run $SHA_NAME /srv/conda/envs/notebook/bin/python -m pip list | grep jupyter-repo2docker
 echo "Finished running docker run`
 
 echo "Variable results = $CURR_CONDA_VER and $CURR_R2D_VER"
