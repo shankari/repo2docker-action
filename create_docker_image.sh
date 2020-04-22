@@ -35,15 +35,18 @@ docker image list
 docker container list
 echo "Checking docker images"
 
-echo "About to run docker run ${SHA_NAME} /srv/conda/bin/conda --version"
-docker run $SHA_NAME /srv/conda/bin/conda --version | cut -d " " -f 2
-echo "About to run it again"
-docker run $SHA_NAME /srv/conda/bin/conda --version | cut -d " " -f 2
 echo "About to list environments"
 docker run $SHA_NAME /srv/conda/bin/conda env list
-echo "About to run pip"
-docker run $SHA_NAME /srv/conda/envs/notebook/bin/python -m pip list | grep jupyter-repo2docker
+echo "About to run docker run ${SHA_NAME} /srv/conda/bin/conda --version"
+docker run $SHA_NAME /srv/conda/bin/conda --version | cut -d " " -f 2
+echo "About to run it again to capture the output"
+CURR_CONDA_VER=`docker run $SHA_NAME /srv/conda/bin/conda --version | cut -d " " -f 2`
 echo "Finished running docker run`
+
+echo "About to run pip on the local container"
+pip3 list | grep jupyter-repo2docker
+echo "About to run it again to capture the output"
+CURR_R2D_VER=`pip3 list | grep jupyter-repo2docker`
 
 echo "Variable results = $CURR_CONDA_VER and $CURR_R2D_VER"
 
