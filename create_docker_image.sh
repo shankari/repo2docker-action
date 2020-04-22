@@ -16,7 +16,7 @@ NB_USER=${NOTEBOOK_USER:-"$GITHUB_ACTOR"}
 IMG_NAME=${IMAGE_NAME:-"EMISSIONEVAL"}
 
 # Run repo2docker
-cmd="jupyter-repo2docker --no-run --user-id 1234 --user-name ${NB_USER} --image-name ${IMAGE_NAME} --ref $GITHUB_SHA ${PWD}"
+cmd="jupyter-repo2docker --no-run --user-id 1234 --user-name ${NB_USER} --image-name ${IMG_NAME} --ref $GITHUB_SHA ${PWD}"
 echo "repo2docker command: $cmd"
 eval $cmd
 
