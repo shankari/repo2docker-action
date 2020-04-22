@@ -50,8 +50,6 @@ CURR_R2D_VER=`pip3 list | grep jupyter-repo2docker`
 
 echo "Variable results = $CURR_CONDA_VER and $CURR_R2D_VER"
 
-CURR_CONDA_VER="UNKNOWN"
-CURR_R2D_VER="UNKNOWN"
 CURR_DOCKER_VER=`docker --version`
 
 # Emit output variables
