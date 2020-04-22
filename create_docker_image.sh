@@ -13,15 +13,21 @@ function check_env() {
 
 # Pick username
 NB_USER=${NOTEBOOK_USER:-"$GITHUB_ACTOR"}
+IMG_NAME=${IMAGE_NAME:-"EMISSIONEVAL"}
 
 # Run repo2docker
-cmd="jupyter-repo2docker --no-run --user-id 1234 --user-name ${NB_USER} --ref $GITHUB_SHA ${PWD}"
+cmd="jupyter-repo2docker --no-run --user-id 1234 --user-name ${NB_USER} --image-name ${IMAGE_NAME} --ref $GITHUB_SHA ${PWD}"
 echo "repo2docker command: $cmd"
 eval $cmd
 
-CURR_CONDA_VER=`/srv/conda/bin/conda --version | cut -d " " -f 2`
-CURR_R2D_VER=`/srv/conda/envs/notebook/bin/pip list | grep jupyter-repo2docker`
+echo "About to check docker path"
+which docker
+echo "Finished checking docker path"
+
+
+# CURR_CONDA_VER=`/srv/conda/bin/conda --version | cut -d " " -f 2`
+# CURR_R2D_VER=`/srv/conda/envs/notebook/bin/pip list | grep jupyter-repo2docker`
 
 # Emit output variables
-echo "::set-output name=CURR_CONDA_VER::${CURR_CONDA_VER}"
-echo "::set-output name=CURR_R2D_VER::${CURR_R2D_VER}"
+# echo "::set-output name=CURR_CONDA_VER::${CURR_CONDA_VER}"
+# echo "::set-output name=CURR_R2D_VER::${CURR_R2D_VER}"
