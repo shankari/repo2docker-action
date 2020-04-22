@@ -6,8 +6,10 @@ inputs:
     require: false
   IMAGE_NAME:
     description: name of the image.  Example - myContainer
-    require: false
+    require: true
 outputs:
+  CURR_DOCKER_VER:
+    description: The docker version used to build
   CURR_CONDA_VER:
     description: The conda version used to build
   CURR_R2D_VER:
